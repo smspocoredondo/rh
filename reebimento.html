@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recebimento de Documentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <a href="envio.html">Cadastro de Documentos</a> |
+        <a href="recebimento.html">Recebimento de Documentos</a> |
+        <a href="concluidos.html">Documentos Concluídos</a>
+    </nav>
+
+    <div class="container">
+        <h1>Recebimento de Documentos</h1>
+
+        <div class="tabela-container">
+            <h2>Documentos Pendentes</h2>
+            <table id="tabelaDocumentos">
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Tipo</th>
+                        <th>Descrição</th>
+                        <th>Origem</th>
+                        <th>Destino</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas geradas dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="recebimento.js"></script>
+</body>
+
+</html>

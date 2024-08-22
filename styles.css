@@ -1,0 +1,145 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+legend {
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.tabela-container {
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+button.acao {
+    background-color: #007bff;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+button.acao.recebido {
+    background-color: #ffc107;
+}
+
+button.acao.concluir {
+    background-color: #28a745;
+}
+
+button.acao:hover {
+    opacity: 0.9;
+}
+
+/* Estiliza a barra de navegação */
+nav {
+    background-color: #2c3e50;
+    /* Cor de fundo da barra de navegação */
+    padding: 10px;
+    text-align: center;
+    /* Centraliza o conteúdo dentro da barra */
+}
+
+nav a {
+    color: #ecf0f1;
+    /* Cor do texto dos links */
+    text-decoration: none;
+    /* Remove sublinhado dos links */
+    font-weight: bold;
+    margin: 0 15px;
+    /* Espaçamento entre os links */
+    padding: 8px 16px;
+    border-radius: 5px;
+    /* Adiciona bordas arredondadas aos links */
+    transition: background-color 0.3s ease;
+    /* Adiciona uma transição suave na mudança de cor */
+}
+
+nav a:hover {
+    background-color: #34495e;
+    /* Cor de fundo ao passar o mouse */
+}

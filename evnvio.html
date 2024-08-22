@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Documentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <a href="envio.html">Cadastro de Documentos</a> |
+        <a href="recebimento.html">Recebimento de Documentos</a> |
+        <a href="concluidos.html">Documentos Concluídos</a>
+    </nav>
+
+    <div class="container">
+        <h1>Cadastro de Documentos</h1>
+
+        <form id="form-protocolo">
+            <fieldset>
+                <legend>Cadastro de Documento</legend>
+
+                <label for="numeroProtocolo">Número do Protocolo:</label>
+                <input type="text" id="numeroProtocolo" required>
+
+                <label for="tipoDocumento">Tipo de Documento:</label>
+                <input type="text" id="tipoDocumento" required>
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" required></textarea>
+
+                <label for="setorOrigem">Setor de Origem:</label>
+                <select id="setorOrigem" required>
+                    <option value="RH">RH</option>
+                    <option value="Juridico">Jurídico</option>
+                </select>
+
+                <label for="setorDestino">Setor de Destino:</label>
+                <select id="setorDestino" required>
+                    <option value="RH">RH</option>
+                    <option value="Juridico">Jurídico</option>
+                </select>
+
+                <button type="submit">Cadastrar Documento</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="envio.js"></script>
+</body>
+
+</html>
