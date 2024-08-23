@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recebimento de Documentos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.6.0/jspdf.umd.min.js"></script>
+    <script src="recebimento.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <!--a href="envio.html">Cadastro de Documentos</a--> |
+        <a href="recebimento.html">Recebimento de Documentos</a> |
+        <a href="concluidos.html">Documentos Concluídos</a>
+        <a href="#" id="imprimirRecebimento">Imprimir Recebimento</a>
+        <a href="#" id="limparDocumentos">Limpar Documentos</a>
+
+    </nav>
+
+    <div class="container">
+        <h1>Recebimento de Documentos</h1>
+        <table id="tabelaDocumentos">
+            <thead>
+                <tr>
+                    <th>Número do Protocolo</th>
+                    <th>Tipo de Documento</th>
+                    <th>Descrição</th>
+                    <th>Setor de Origem</th>
+                    <th>Setor de Destino</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Documentos serão carregados aqui -->
+            </tbody>
+        </table>
+
+
+    </div>
+</body>
+
+</html>

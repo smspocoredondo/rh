@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos Concluídos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.6.0/jspdf.umd.min.js"></script>
+    <script src="concluidos.js" defer></script>
+</head>
+
+<body>
+    <nav>
+        <!--a href="envio.html">Cadastro de Documentos</a--> |
+        <a href="recebimento.html">Recebimento de Documentos</a> |
+        <a href="concluidos.html">Documentos Concluídos</a>
+        <a href="#" id="imprimirConcluidos">Imprimir Concluídos</a>
+        <a href="#" id="limparConcluidos">Limpar Concluídos</a>
+
+    </nav>
+
+    <div class="container">
+        <h1>Documentos Concluídos</h1>
+        <table id="tabelaConcluidos">
+            <thead>
+                <tr>
+                    <th>Número do Protocolo</th>
+                    <th>Tipo de Documento</th>
+                    <th>Descrição</th>
+                    <th>Setor de Origem</th>
+                    <th>Setor de Destino</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Documentos concluídos serão carregados aqui -->
+            </tbody>
+        </table>
+
+
+    </div>
+</body>
+
+</html>
