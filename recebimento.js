@@ -1,6 +1,7 @@
-// Função para carregar documentos da Local Storage e exibi-los na tabela de recebimento
+// Função para carregar documentos do Local Storage e exibi-los na tabela de recebimento
 function carregarDocumentos() {
     let documentos = JSON.parse(localStorage.getItem('documentos')) || [];
+    console.log('Documentos carregados:', documentos); // Verifica se os documentos estão sendo carregados corretamente
     const tabela = document.getElementById('tabelaDocumentos').getElementsByTagName('tbody')[0];
     tabela.innerHTML = ''; // Limpa a tabela antes de adicionar
 
@@ -81,18 +82,6 @@ function salvarDocumentosConcluidos(documentosConcluidos) {
     localStorage.setItem('documentosConcluidos', JSON.stringify(documentosConcluidos));
 }
 
-// Função para limpar a tabela de recebimento e a lista de documentos
-function limparTabelaRecebimento() {
-    localStorage.removeItem('documentos');
-    carregarDocumentos(); // Atualiza a tabela para refletir a limpeza
-}
-
-// Evento para o link de limpar a tabela de recebimento
-document.getElementById('limparDocumentos').addEventListener('click', function (e) {
-    e.preventDefault(); // Previne o comportamento padrão do link
-    limparTabelaRecebimento();
-});
-
 // Carrega os documentos ao abrir a página
 document.addEventListener('DOMContentLoaded', carregarDocumentos);
 
@@ -101,7 +90,7 @@ function imprimirTabela(tabelaId) {
     const tabela = document.getElementById(tabelaId).outerHTML;
     const novaJanela = window.open('', '', 'height=600,width=800');
     novaJanela.document.write('<html><head><title>Imprimir Tabela</title>');
-    novaJanela.document.write('<style>body{font-family: Arial, sans-serif;} table{width: 100%; border-collapse: collapse;} table, th, td{border: 1px solid black; padding: 8px; text-align: left; font-size: 12px;} th{background-color: #f2f2f2;}</style>');
+    novaJanela.document.write('<style>body{font-family: Arial, sans-serif;} table{width: 100%; border-collapse: collapse;} table, th, td{border: 1px solid black; padding: 8px; text-align: left; font-size: 12px} th{background-color: #f2f2f2;}</style>');
     novaJanela.document.write('</head><body>');
 
     // Adicionando uma imagem no topo da tabela
@@ -117,10 +106,4 @@ function imprimirTabela(tabelaId) {
 document.getElementById('imprimirRecebimento').addEventListener('click', function (e) {
     e.preventDefault(); // Previne o comportamento padrão do link
     imprimirTabela('tabelaDocumentos');
-});
-
-// Evento para o link de imprimir a tabela de concluídos
-document.getElementById('imprimirConcluidos').addEventListener('click', function (e) {
-    e.preventDefault(); // Previne o comportamento padrão do link
-    imprimirTabela('tabelaDocumentosConcluidos');
 });
