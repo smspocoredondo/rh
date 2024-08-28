@@ -4,56 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Documentos</title>
+    <title>Sistema de Protocolo</title>
     <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
     <nav>
-       |
-        <a href="recebimento.html">Recebimento de Documentos</a> |
+        <a href="recebimento.html">Recebimento de Documentos</a>
         <a href="concluidos.html">Documentos Concluídos</a>
+        <a href="#" id="logout" class="logout-btn">Sair do Sistema</a>
     </nav>
 
     <div class="container">
-
-        <h1>Cadastro de Documentos</h1>
+        <img src="logo_poco.png" alt="Descrição da Imagem" style="max-width: 200px; height: auto;">
+        <h1>Secretaria Municipal de Recursos Humanos</h1>
 
         <form id="form-protocolo">
             <fieldset>
-
-                <legend>Protocolo de Documento</legend>
-
-                <!-- Imagem adicionada aqui -->
-                <img src="logo_poco.png" alt="Descrição da Imagem" style="max-width: 150px; height: auto;">
-
-                <label for="numeroProtocolo">Número do Protocolo:</label>
-                <input type="text" id="numeroProtocolo" required>
-                <label for="arquivoDocumento">Anexar Documento:</label>
-                <input type="file" id="arquivoDocumento" name="arquivoDocumento">
-                <label for="tipoDocumento">Tipo de Documento:</label>
-                <input type="text" id="tipoDocumento" required>
-
-                <label for="descricao">Descrição:</label>
-                <textarea id="descricao" required></textarea>
-
-                <label for="setorOrigem">Setor de Origem:</label>
-                <select id="setorOrigem" required>
-                    <option value="RH">RH</option>
-                    <option value="Juridico">Jurídico</option>
-                </select>
-
-                <label for="setorDestino">Setor de Destino:</label>
-                <select id="setorDestino" required>
-                    <option value="RH">RH</option>
-                    <option value="Juridico">Jurídico</option>
-                </select>
-                <!-- Campo de upload de arquivo -->
+                <legend>Controle de Protocolo</legend>
 
 
-                <button class="envio" type="submit">Protocolar Documento</button>
+
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="numeroProtocolo">Número do Protocolo:</label>
+                            <input type="text" id="numeroProtocolo" class="proto" name="numeroProtocolo" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="arquivoDocumento">Anexar Documento:</label>
+                            <input type="file" id="arquivoDocumento" name="arquivoDocumento">
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="tipoDocumento">Tipo de Documento:</label>
+                            <input type="text" id="tipoDocumento" required>
+                        </div>
+                        <div class="form-area">
+                            <label for="descricao">Descrição:</label>
+                            <textarea id="descricao" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <label for="setorOrigem">Setor de Origem:</label>
+                        <select id="setorOrigem" required>
+                            <option value="RH">RH</option>
+                            <option value="Juridico">Jurídico</option>
+                        </select>
+
+                        <label for="setorDestino">Setor de Destino:</label>
+                        <select id="setorDestino" required>
+                            <option value="RH">RH</option>
+                            <option value="Juridico">Jurídico</option>
+                        </select>
+
+
+                    </div>
+                </div>
             </fieldset>
+            <button class="envio" type="submit">Protocolar Documento</button>
         </form>
+    </div>
+
+    <div>
+        <footer>
+            <div class="footer-content">
+                <span>&copy; 2024 - I-infotec - Desenvolvimentos de Softwares</span>
+                <!-- Adicione mais links ou informações aqui -->
+            </div>
+        </footer>
     </div>
 
     <script src="envio.js"></script>
