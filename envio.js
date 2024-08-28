@@ -1,64 +1,45 @@
-document.getElementById('form-protocolo').addEventListener('submit', function (e) {
-    e.preventDefault();
+// Função para gerar o número de protocolo
+function gerarNumeroProtocolo() {
+    // Obter o ano atual
+    const anoAtual = new Date().getFullYear();
 
-    // Coleta os dados do formulário
-    const numeroProtocolo = document.getElementById('numeroProtocolo').value;
-    const tipoDocumento = document.getElementById('tipoDocumento').value;
-    const descricao = document.getElementById('descricao').value;
-    const setorOrigem = document.getElementById('setorOrigem').value;
-    const setorDestino = document.getElementById('setorDestino').value;
+    // Obter o último ano e número de protocolo do localStorage
+    let ultimoAno = localStorage.getItem('ultimoAnoProtocolo') || anoAtual;
+    let ultimoProtocolo = localStorage.getItem('ultimoProtocolo') || 0;
 
-    // Coleta o arquivo
-    const arquivoInput = document.getElementById('arquivoDocumento');
-    const arquivo = arquivoInput.files[0];
-
-    // Verifica se um arquivo foi selecionado
-    if (!arquivo) {
-        alert('Por favor, anexe um documento.');
-        return;
+    // Verificar se o ano atual é diferente do último ano salvo
+    if (anoAtual !== parseInt(ultimoAno)) {
+        // Se o ano mudou, reinicia o contador de protocolos
+        ultimoProtocolo = 0;
     }
 
-    // Converte o arquivo em base64
-    const reader = new FileReader();
-    reader.onloadend = function () {
-        const base64Arquivo = reader.result;
+    // Incrementa o número de protocolo
+    let novoProtocolo = parseInt(ultimoProtocolo) + 1;
 
-        // Cria um objeto para o documento
-        const documento = {
-            numeroProtocolo,
-            tipoDocumento,
-            descricao,
-            setorOrigem,
-            setorDestino,
-            arquivo: base64Arquivo, // Armazena o arquivo em base64
-            status: 'Pendente' // Status inicial
-        };
+    // Formatar o número de protocolo com o ano
+    let numeroProtocoloFormatado = `${novoProtocolo}/${String(anoAtual).padStart(3, '0')}`;
 
-        // Obtém documentos do Local Storage
-        let documentos = JSON.parse(localStorage.getItem('documentos')) || [];
+    // Atualiza o campo de número de protocolo no formulário
+    document.getElementById('numeroProtocolo').value = numeroProtocoloFormatado;
 
-        // Adiciona o novo documento à lista
-        documentos.push(documento);
-
-        // Salva a lista atualizada no Local Storage
-        localStorage.setItem('documentos', JSON.stringify(documentos));
-
-        // Limpa o formulário após a submissão
-        document.getElementById('form-protocolo').reset();
-
-        alert('Documento cadastrado com sucesso!');
-    };
-
-    // Lê o arquivo como base64
-    reader.readAsDataURL(arquivo);
-});
-
-// Função para converter o texto de um campo de input para maiúsculas
-function converterParaMaiusculas(event) {
-    event.target.value = event.target.value.toUpperCase();
+    // Salvar o novo número de protocolo e ano no localStorage
+    localStorage.setItem('ultimoProtocolo', novoProtocolo);
+    localStorage.setItem('ultimoAnoProtocolo', anoAtual);
 }
 
-// Aplica a função de conversão a todos os inputs e textareas
+// Função para salvar o documento
+function salvarDocumento(documento) {
+    let documentos = JSON.parse(localStorage.getItem('documentos')) || [];
+    documentos.push(documento);
+    localStorage.setItem('documentos', JSON.stringify(documentos));
+    document.getElementById('form-protocolo').reset();
+    alert('Documento cadastrado com sucesso!');
+
+    // Gerar novo número de protocolo para a próxima submissão
+    gerarNumeroProtocolo();
+}
+
+// Função para aplicar letras maiúsculas automaticamente
 function aplicarMaiusculas() {
     const inputs = document.querySelectorAll('input[type="text"], textarea');
     inputs.forEach(input => {
@@ -66,5 +47,51 @@ function aplicarMaiusculas() {
     });
 }
 
-// Aplica a função ao carregar a página
-document.addEventListener('DOMContentLoaded', aplicarMaiusculas);
+// Função auxiliar para converter texto para maiúsculas
+function converterParaMaiusculas(event) {
+    event.target.value = event.target.value.toUpperCase();
+}
+
+// Evento de submissão do formulário
+document.getElementById('form-protocolo').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const numeroProtocolo = document.getElementById('numeroProtocolo').value;
+    const tipoDocumento = document.getElementById('tipoDocumento').value;
+    const descricao = document.getElementById('descricao').value;
+    const setorOrigem = document.getElementById('setorOrigem').value;
+    const setorDestino = document.getElementById('setorDestino').value;
+
+    const arquivoInput = document.getElementById('arquivoDocumento');
+    const arquivo = arquivoInput.files[0];
+
+    const documento = {
+        numeroProtocolo,
+        tipoDocumento,
+        descricao,
+        setorOrigem,
+        setorDestino,
+        status: 'Pendente'
+    };
+
+    if (arquivo) {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            documento.arquivo = reader.result;
+            salvarDocumento(documento);
+        };
+        reader.readAsDataURL(arquivo);
+    } else {
+        salvarDocumento(documento);
+    }
+});
+
+// Chamar as funções ao carregar a página
+document.addEventListener('DOMContentLoaded', function () {
+    gerarNumeroProtocolo(); // Gerar o número de protocolo ao carregar a página
+    aplicarMaiusculas(); // Aplicar letras maiúsculas aos inputs
+});
+
+document.getElementById('logout').addEventListener('click', function () {
+    window.location.href = 'login.html'; // Redireciona para a página de login
+});
