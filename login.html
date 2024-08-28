@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sistema de Protocolo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container login-container">
+        <img src="logo_poco.png" alt="Descrição da Imagem" style="max-width: 150px; height: auto;">
+        <h1>Sistema de Protocolo - RH</h1>
+        <form id="login-form" action="envio.html">
+            <fieldset>
+                <legend>Autenticação</legend>
+                <div class="form-group">
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+            </fieldset>
+            <button type="submit" class="login-btn">Entrar</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>&copy; 2024 - I-infotec - Desenvolvimentos de Softwares</span>
+        </div>
+    </footer>
+
+</body>
+<script>document.getElementById('login-form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Impede o envio do formulário
+
+        // Credenciais de exemplo
+        const validUsername = 'admin';
+        const validPassword = '1234';
+
+        // Obtém os valores inseridos pelo usuário
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Verifica se as credenciais estão corretas
+        if (username === validUsername && password === validPassword) {
+            // Redireciona para a página principal
+            window.location.href = 'envio.html';
+        } else {
+            // Exibe uma mensagem de erro
+            alert('Usuário ou senha incorretos!');
+        }
+    });
+</script>
+
+</html>
