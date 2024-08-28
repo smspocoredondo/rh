@@ -41,9 +41,9 @@ document.addEventListener('DOMContentLoaded', carregarDocumentosConcluidos);
 // Função para imprimir uma tabela específica
 function imprimirTabela(tabelaId) {
     const tabela = document.getElementById(tabelaId).outerHTML;
-    const novaJanela = window.open('', '', 'height=600,width=800');
-    novaJanela.document.write('<html><head><title>Imprimir Tabela</title>');
-    novaJanela.document.write('<style>body{font-family: Arial, sans-serif;} table{width: 100%; border-collapse: collapse;} table, th, td{border: 1px solid black; padding: 8px; text-align: left; font-size: 12px;} th{background-color: #f2f2f2;}</style>');
+    const novaJanela = window.open('', '', 'height=800,width=900');
+    novaJanela.document.write('<html><head><title>Relátorio de solicitações concluídas - Jurídico</title>');
+    novaJanela.document.write('<style>body{font-family: Arial, sans-serif;} table{width: 90%; border-collapse: collapse;} table, th, td{border: 1px solid black; padding: 8px; text-align: left; font-size: 12px} th{background-color: #f2f2f2;}</style>');
     novaJanela.document.write('</head><body>');
 
     // Adicionando uma imagem no topo da tabela
@@ -61,8 +61,6 @@ document.getElementById('imprimirConcluidos').addEventListener('click', function
     imprimirTabela('tabelaConcluidos');
 });
 
-// Evento para o link de imprimir a tabela de recebimento
-document.getElementById('imprimirRecebimento').addEventListener('click', function (e) {
-    e.preventDefault(); // Previne o comportamento padrão do link
-    imprimirTabela('tabelaDocumentos');
+document.getElementById('logout').addEventListener('click', function () {
+    window.location.href = 'login.html'; // Redireciona para a página de login
 });
